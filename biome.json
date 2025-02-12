@@ -13,7 +13,8 @@
       },
       "suspicious": {
         "noExplicitAny": "off",
-        "noRedeclare":"warn"        
+        "noRedeclare":"warn",
+        "noArrayIndexKey":"off"     
       },
       "style": {
         "noNonNullAssertion": "off",
