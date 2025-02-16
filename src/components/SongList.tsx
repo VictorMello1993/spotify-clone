@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { SongItemList } from "./ItemList";
 import SongItem from "./SongItem";
 
@@ -6,7 +7,7 @@ interface SongListProps {
 }
 
 export default function SongList({ songsArray }: SongListProps) {
-	const items = 5;
+	const [items, setItems] = useState(5);
 	return (
 		<div className="song-list">
 			{songsArray
@@ -14,7 +15,14 @@ export default function SongList({ songsArray }: SongListProps) {
 				.map((song, index) => (
 					<SongItem {...song} key={index} index={index} />
 				))}
-			<p className="song-list__see-more">Ver mais</p>
+			<p
+				className="song-list__see-more"
+				onClick={() => {
+					setItems(items + 5);
+				}}
+			>
+				Ver mais
+			</p>
 		</div>
 	);
 }

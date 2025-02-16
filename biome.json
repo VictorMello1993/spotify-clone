@@ -21,6 +21,9 @@
         "useImportType": "off",
         "noParameterAssign":"off",
         "useSelfClosingElements":"off"        
+      },
+      "a11y":{
+        "useKeyWithClickEvents":"off"
       }
     }
   },

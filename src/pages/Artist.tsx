@@ -9,7 +9,7 @@ export default function Artist() {
 	const { id } = useParams();
 
 	const artist = artistArray.find((item) => item.id === Number(id));
-	const songsListFromArtist = songsArray.filter((item) => item.artist.includes(artist!.name));
+	const songsListFromArtist = songsArray.filter((item) => item.artist === artist?.name);
 
 	const randomIndex = Math.floor(Math.random() * (songsListFromArtist.length - 1));
 	const randomIdFromArtist = songsListFromArtist[randomIndex].id;

@@ -1,28 +1,45 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { artistArray } from "../assets/database/artists";
+import { songsArray } from "../assets/database/songs";
 import Player from "../components/Player";
 
 export default function Song() {
+	const { id } = useParams();
+
+	const song = songsArray.find((song) => song.id === Number(id));
+	const artist = artistArray.find((artist) => artist.name === song?.artist);
+
+	const songsListFromArtist = songsArray.filter((item) => item.artist === artist?.name);
+
+	const randomIndexBackward = Math.floor(Math.random() * (songsListFromArtist.length - 1));
+	const randomIndexForward = Math.floor(Math.random() * (songsListFromArtist.length - 1));
+	const randomIdFromArtistBackward = songsListFromArtist[randomIndexBackward].id;
+	const randomIdFromArtistForward = songsListFromArtist[randomIndexForward].id;
+
+	console.log(randomIdFromArtistBackward);
+	console.log(randomIdFromArtistForward);
+
 	return (
 		<div className="song">
 			<div className="song__container">
 				<div className="song__image-container">
-					<img src="https://i.scdn.co/image/ab67616d00001e022774b00531d558bc19e12a24" alt="Imagem da música X" />
+					<img src={song?.image} alt={`Imagem da música ${song?.name}`} />
 				</div>
 			</div>
 			<div className="song__bar">
-				<Link to="/artist/1" className="song__artist-image">
-					<img
-						width={75}
-						height={75}
-						src="https://i.scdn.co/image/ab676161000051744dcd8a3bff84cd7703892cf4"
-						alt="Imagem o Artista Y"
-					/>
+				<Link to={`/artist/${artist?.id}`} className="song__artist-image">
+					<img width={75} height={75} src={artist?.image} alt={`Imagem o Artista ${song?.artist}`} />
 				</Link>
-				<Player />
+
+				<Player
+					duration={song!.duration}
+					randomIdFromArtistBackward={randomIdFromArtistBackward}
+					randomIdFromArtistForward={randomIdFromArtistForward}
+				/>
 
 				<div>
-					<p className="song__name">Nome da música X</p>
-					<p>Nome do Artista Y</p>
+					<p className="song__name">{song?.name}</p>
+					<p>{song?.artist}</p>
 				</div>
 			</div>
 		</div>

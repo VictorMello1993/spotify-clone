@@ -46,7 +46,7 @@ export default function ItemList({ title, items, itemsArray, path, idPath }: Ite
 			<div className="item-list__container">
 				{itemsArray
 					.filter((_, index: number) => index < finalItems)
-					.map((currentValue: ArtistItemList | SongItemList, index: number) => (
+					.map((currentValue: any, index: number) => (
 						<SingleItem idPath={idPath} {...currentValue} key={`${title}-${index}`} />
 					))}
 			</div>

@@ -11,7 +11,7 @@ interface SingleItemProps {
 	idPath: string;
 }
 
-export default function SingleItem({ id, name, image, banner, artist, idPath }: SingleItemProps) {
+export default function SingleItem({ id, name, image, artist, idPath }: SingleItemProps) {
 	return (
 		<Link to={`${idPath}/${id}`} className="single-item">
 			<div className="single-item__div-image-button">
