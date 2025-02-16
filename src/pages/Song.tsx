@@ -13,8 +13,8 @@ export default function Song() {
 
 	const randomIndexBackward = Math.floor(Math.random() * (songsListFromArtist.length - 1));
 	const randomIndexForward = Math.floor(Math.random() * (songsListFromArtist.length - 1));
-	const randomIdFromArtistBackward = songsListFromArtist[randomIndexBackward].id;
-	const randomIdFromArtistForward = songsListFromArtist[randomIndexForward].id;
+	const randomIdFromArtistBackward = songsListFromArtist[randomIndexBackward].id!;
+	const randomIdFromArtistForward = songsListFromArtist[randomIndexForward].id!;
 
 	console.log(randomIdFromArtistBackward);
 	console.log(randomIdFromArtistForward);

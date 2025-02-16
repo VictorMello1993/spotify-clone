@@ -24,6 +24,9 @@
       },
       "a11y":{
         "useKeyWithClickEvents":"off"
+      },
+      "performance": {
+        "noDelete": "off"
       }
     }
   },
