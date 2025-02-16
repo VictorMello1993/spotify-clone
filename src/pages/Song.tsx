@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Player from "../components/Player";
 
 export default function Song() {
@@ -9,14 +10,14 @@ export default function Song() {
 				</div>
 			</div>
 			<div className="song__bar">
-				<div className="song__artist-image">
+				<Link to="/artist/1" className="song__artist-image">
 					<img
 						width={75}
 						height={75}
 						src="https://i.scdn.co/image/ab676161000051744dcd8a3bff84cd7703892cf4"
 						alt="Imagem o Artista Y"
 					/>
-				</div>
+				</Link>
 				<Player />
 
 				<div>

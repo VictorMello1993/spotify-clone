@@ -4,19 +4,19 @@ import SingleItem from "./SingleItem";
 interface ItemListProps {
 	title: string;
 	items: number;
-	itemsArray: ArtistItem[] | SongItem[];
+	itemsArray: ArtistItemList[] | SongItemList[];
 	path: string;
 	idPath: string;
 }
 
-interface ArtistItem {
+export interface ArtistItemList {
 	id: number;
 	image: string;
 	name: string;
 	banner: string;
 }
 
-interface SongItem {
+export interface SongItemList {
 	id: number;
 	image: string;
 	name: string;
@@ -46,7 +46,7 @@ export default function ItemList({ title, items, itemsArray, path, idPath }: Ite
 			<div className="item-list__container">
 				{itemsArray
 					.filter((_, index: number) => index < finalItems)
-					.map((currentValue: ArtistItem | SongItem, index: number) => (
+					.map((currentValue: ArtistItemList | SongItemList, index: number) => (
 						<SingleItem idPath={idPath} {...currentValue} key={`${title}-${index}`} />
 					))}
 			</div>

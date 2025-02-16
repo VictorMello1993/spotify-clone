@@ -1,13 +1,18 @@
 import { faBackwardStep, faCirclePlay, faForwardStep } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 export default function Player() {
 	return (
 		<div className="player">
 			<div className="player__controllers">
-				<FontAwesomeIcon className="player__icon" icon={faBackwardStep} />
+				<Link to="/song/1">
+					<FontAwesomeIcon className="player__icon" icon={faBackwardStep} />
+				</Link>
 				<FontAwesomeIcon className="player__icon player__icon--play" icon={faCirclePlay} />
-				<FontAwesomeIcon className="player__icon" icon={faForwardStep} />
+				<Link to="/song/2">
+					<FontAwesomeIcon className="player__icon" icon={faForwardStep} />
+				</Link>
 			</div>
 			<div className="player__progress">
 				<p>00:00</p>
