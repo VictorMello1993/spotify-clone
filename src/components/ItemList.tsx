@@ -1,24 +1,44 @@
+import { Link } from "react-router-dom";
 import SingleItem from "./SingleItem";
 
 interface ItemListProps {
 	title: string;
 	items: number;
+	itemsArray: ArtistItem[] | SongItem[];
+	path: string;
+	idPath: string;
 }
 
-export default function ItemList({ title, items }: ItemListProps) {
+interface ArtistItem {
+	id: number;
+	image: string;
+	name: string;
+	banner: string;
+}
+
+interface SongItem {
+	id: number;
+	image: string;
+	name: string;
+	artist: string;
+	audio: string;
+	duration: string;
+}
+
+export default function ItemList({ title, items, itemsArray, path, idPath }: ItemListProps) {
 	return (
 		<div className="item-list">
 			<div className="item-list__header">
 				<h2>{title} populares</h2>
-				<a href="/" className="item-list__header">
+				<Link to={path} className="item-list__header">
 					Mostrar tudo
-				</a>
+				</Link>
 			</div>
 			<div className="item-list__container">
-				{Array(items)
-					.fill()
-					.map((currentValue, index) => (
-						<SingleItem key={`${title}${index}`} />
+				{itemsArray
+					.filter((_, index: number) => index < items)
+					.map((currentValue: ArtistItem | SongItem, index: number) => (
+						<SingleItem idPath={idPath} {...currentValue} key={`${title}-${index}`} />
 					))}
 			</div>
 		</div>

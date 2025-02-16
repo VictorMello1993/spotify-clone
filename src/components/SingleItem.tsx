@@ -1,26 +1,32 @@
 import { faCirclePlay } from "@fortawesome/free-solid-svg-icons/faCirclePlay";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
-export default function SingleItem(){
-  return (
-    <div className="single-item">
-                    <div className="single-item__div-image-button">
-                      <div className="single-item__div-image">
-                        <img
-                          className="single-item__image"
-                          src="https://i.scdn.co/image/ab676161000051744dcd8a3bff84cd7703892cf4"
-                          alt="Imagem do artista Henrique & Juliano"
-                        />
-                      </div>
-                      <FontAwesomeIcon className="single-item__icon" icon={faCirclePlay} />
-                    </div>
-        
-                    <div className="single-item__texts">
-                      <div className="single-item__2lines">
-                        <p className="single-item__title">Amo Noite E Dia - Live In Sao Paulo / 2010</p>
-                      </div>
-                      <p className="single-item__type">Artista</p>
-                    </div>
-                  </div>
-  )
+interface SingleItemProps {
+	id: number;
+	name: string;
+	image: string;
+	banner: string;
+	artist: string;
+	idPath: string;
+}
+
+export default function SingleItem({ id, name, image, banner, artist, idPath }: SingleItemProps) {
+	return (
+		<Link to={`${idPath}/${id}`} className="single-item">
+			<div className="single-item__div-image-button">
+				<div className="single-item__div-image">
+					<img className="single-item__image" src={image} alt={`Imagem do artista ${name}`} />
+				</div>
+				<FontAwesomeIcon className="single-item__icon" icon={faCirclePlay} />
+			</div>
+
+			<div className="single-item__texts">
+				<div className="single-item__2lines">
+					<p className="single-item__title">{name}</p>
+				</div>
+				<p className="single-item__type">{artist ?? "Artista"}</p>
+			</div>
+		</Link>
+	);
 }
