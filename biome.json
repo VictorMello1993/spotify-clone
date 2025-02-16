@@ -19,7 +19,8 @@
       "style": {
         "noNonNullAssertion": "off",
         "useImportType": "off",
-        "noParameterAssign":"off"        
+        "noParameterAssign":"off",
+        "useSelfClosingElements":"off"        
       }
     }
   },

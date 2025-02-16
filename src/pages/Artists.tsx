@@ -1,3 +1,5 @@
+import Main from "../components/Main";
+
 export default function Artists() {
-	return <div>Artistas</div>;
+	return <Main type="artists" />;
 }
