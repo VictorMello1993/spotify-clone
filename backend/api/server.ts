@@ -1,3 +1,4 @@
+import cors from "cors";
 import express from "express";
 import { database } from "./connect";
 
@@ -7,6 +8,8 @@ const PORT = 3000;
 app.get("/", (req, res) => {
 	res.send("Hello world");
 });
+
+app.use(cors());
 
 app.get("/artists", async (req, res) => {
 	const artistsCollection = await database.collection("artists").find({}).toArray();
