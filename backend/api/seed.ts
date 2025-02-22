@@ -1,23 +1,34 @@
-import { artistArray } from "../../src/assets/database/artists";
-import { songsArray } from "../../src/assets/database/songs";
+import { artistsArray } from "../../frontend/src/assets/database/artists";
+import { songsArray } from "../../frontend/src/assets/database/songs";
 import { database } from "./connect";
 
-const newArtistArray = artistArray.map((artist) => {
-	const newArtist = { ...artist };
-	delete newArtist.id;
+interface ArtistItem {
+	id?: string | number;
+	image: string;
+	name: string;
+	banner: string;
+}
 
-	return newArtist;
+interface SongItem {
+	id?: number | string;
+	image: string;
+	name: string;
+	artist: string;
+	audio: string;
+	duration: string;
+}
+
+const newArtistsArray = (artistsArray as ArtistItem[]).map((artist) => {
+	const newObj = { id: artist.id, ...artist };
+	delete newObj.id;
+	return newObj;
 });
 
-const newSongArray = songsArray.map((song) => {
-	const newSong = { ...song };
-	delete newSong.id;
-
-	return newSong;
+const newSongsArray = (songsArray as SongItem[]).map((song) => {
+	const newObj = { ...song };
+	delete newObj.id;
+	return newObj;
 });
 
-const responseSongs = await database.collection("songs").insertMany(newSongArray);
-const responseArtists = await database.collection("artists").insertMany(newArtistArray);
-
-console.log(responseSongs);
-console.log(responseArtists);
+await database.collection("songs").insertMany(newSongsArray);
+await database.collection("artists").insertMany(newArtistsArray);
