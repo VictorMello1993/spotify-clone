@@ -1,7 +1,7 @@
 import { artistsArray } from "../../../api/api";
 
 export interface ArtistItemList {
-	_id?: number | string;
+	id?: number | string;
 	image: string;
 	name: string;
 	banner: string;

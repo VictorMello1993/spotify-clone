@@ -3,6 +3,7 @@ import { SongItemList } from "../assets/database/songs";
 
 interface SongItemProps extends SongItemList {
 	index: number;
+	_id: string;
 }
 
 export default function SongItem({ name, duration, image, _id, index }: SongItemProps) {

@@ -39,7 +39,6 @@ export default function Player({
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [currentTime, setCurrentTime] = useState(formatTime(0));
 	const durationInSeconds = timeInSeconds(duration);
-	// const currentTimeInSeconds = audioPlayer.current!.currentTime;
 
 	function playPause() {
 		isPlaying ? audioPlayer.current?.pause() : audioPlayer.current?.play();

@@ -1,7 +1,7 @@
 import { songsArray } from "../../../api/api";
 
 export interface SongItemList {
-	_id?: number | string;
+	id?: number | string;
 	image: string;
 	name: string;
 	artist: string;
