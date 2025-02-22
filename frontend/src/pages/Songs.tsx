@@ -1,3 +1,5 @@
+import Main from "../components/Main";
+
 export default function Songs() {
-	return <div>Músicas</div>;
+	return <Main type="songs" />;
 }
