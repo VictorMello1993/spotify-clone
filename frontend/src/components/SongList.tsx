@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { Song } from "../../api/api";
 import { SongItemList } from "../assets/database/songs";
 import SongItem from "./SongItem";
 
 interface SongListProps {
-	songsArray: SongItemList[];
+	songsArray: SongItemList[] | Song[];
 }
 
 export default function SongList({ songsArray }: SongListProps) {
@@ -11,10 +12,10 @@ export default function SongList({ songsArray }: SongListProps) {
 
 	return (
 		<div className="song-list">
-			{songsArray
+			{(songsArray as Song[])
 				.filter((_, index) => index < items)
 				.map((song, index) => (
-					<SongItem _id={song.id as string} {...song} key={index} index={index} />
+					<SongItem _id={song._id as string} {...song} key={index} index={index} />
 				))}
 			<p
 				className="song-list__see-more"

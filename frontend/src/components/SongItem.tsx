@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { SongItemList } from "../assets/database/songs";
+import { convertFromMillisToSeconds, formatTime } from "../utils/Utils";
 
 interface SongItemProps extends SongItemList {
 	index: number;
@@ -7,6 +8,9 @@ interface SongItemProps extends SongItemList {
 }
 
 export default function SongItem({ name, duration, image, _id, index }: SongItemProps) {
+	const durationInSeconds = convertFromMillisToSeconds(duration as number);
+	const durationFormatted = formatTime(durationInSeconds);
+
 	return (
 		<Link to={`/song/${_id}`} className="song-item">
 			<div className="song-item__number-album">
@@ -16,7 +20,7 @@ export default function SongItem({ name, duration, image, _id, index }: SongItem
 					<p className="song-item__name">{name}</p>
 				</div>
 			</div>
-			<p>{duration}</p>
+			<p>{durationFormatted}</p>
 		</Link>
 	);
 }

@@ -13,7 +13,7 @@ export interface Song {
 	name: string;
 	artist: string;
 	audio: string;
-	duration: string;
+	duration: number;
 }
 
 const URL = "http://localhost:3000";

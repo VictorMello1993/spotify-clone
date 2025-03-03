@@ -2,6 +2,7 @@ import { faBackwardStep, faCirclePause, faCirclePlay, faForwardStep } from "@for
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { formatTime, timeInSeconds } from "../utils/Utils";
 
 interface PlayerProps {
 	duration: string;
@@ -11,22 +12,6 @@ interface PlayerProps {
 }
 
 const ONE_SECOND = 1000;
-
-function formatTime(timeInSeconds: number) {
-	const minutes = Math.floor(timeInSeconds / 60);
-	const minutesFormatted = minutes.toString().padStart(2, "0");
-
-	const seconds = Math.floor(timeInSeconds - minutes * 60);
-	const secondsFormatted = seconds.toString().padStart(2, "0");
-
-	return `${minutesFormatted}:${secondsFormatted}`;
-}
-
-function timeInSeconds(timeString: string) {
-	const [minutes, seconds] = timeString.split(":");
-
-	return Number(seconds) + Number(minutes) * 60;
-}
 
 export default function Player({
 	duration,

@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { Artist, Song } from "../../api/api";
 import { ArtistItemList } from "../assets/database/artists";
 import { SongItemList } from "../assets/database/songs";
 import SingleItem from "./SingleItem";
@@ -6,7 +7,7 @@ import SingleItem from "./SingleItem";
 interface ItemListProps {
 	title: string;
 	items: number;
-	itemsArray: ArtistItemList[] | SongItemList[];
+	itemsArray: ArtistItemList[] | SongItemList[] | Artist[] | Song[];
 	path: string;
 	idPath: string;
 }

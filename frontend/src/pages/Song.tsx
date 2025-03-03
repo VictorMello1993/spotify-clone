@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { artistsArray } from "../assets/database/artists";
 import { songsArray } from "../assets/database/songs";
 import Player from "../components/Player";
+import { convertFromMillisToSeconds, formatTime } from "../utils/Utils";
 
 export default function Song() {
 	const { id } = useParams();
@@ -16,6 +17,9 @@ export default function Song() {
 	const randomIdFromArtistBackward = songsListFromArtist[randomIndexBackward]._id!;
 	const randomIdFromArtistForward = songsListFromArtist[randomIndexForward]._id!;
 
+	const durationInSeconds = convertFromMillisToSeconds(song!.duration);
+	const durationFormatted = formatTime(durationInSeconds);
+
 	return (
 		<div className="song">
 			<div className="song__container">
@@ -29,7 +33,7 @@ export default function Song() {
 				</Link>
 
 				<Player
-					duration={song!.duration}
+					duration={durationFormatted}
 					randomIdFromArtistBackward={randomIdFromArtistBackward}
 					randomIdFromArtistForward={randomIdFromArtistForward}
 					audio={song!.audio}
