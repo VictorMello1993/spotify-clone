@@ -18,13 +18,13 @@ interface SongItem {
 	duration: string;
 }
 
-const newArtistsArray = (artistsArray as ArtistItem[]).map((artist) => {
+const newArtistsArray = artistsArray.map((artist) => {
 	const newObj = { id: artist.id, ...artist };
 	delete newObj.id;
 	return newObj;
 });
 
-const newSongsArray = (songsArray as SongItem[]).map((song) => {
+const newSongsArray = songsArray.map((song) => {
 	const newObj = { ...song };
 	delete newObj.id;
 	return newObj;
